@@ -12,4 +12,8 @@ describe('Test getByIdHandler', () => {
     afterAll(() => { 
         getSpy.mockRestore(); 
     });
+
+    it('schools test', async () => {
+        expect(true).toEqual(true);
+    });
 });
