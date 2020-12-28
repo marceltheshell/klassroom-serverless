@@ -1,6 +1,4 @@
-// Import all functions from put-item.js 
 const lambda = require('../../../src/handlers/put-item.js'); 
-// Import dynamodb from aws-sdk 
 const dynamodb = require('aws-sdk/clients/dynamodb'); 
  
 // This includes all tests for putItemHandler() 
