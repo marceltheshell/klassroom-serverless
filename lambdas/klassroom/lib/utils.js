@@ -1,5 +1,5 @@
-function router() {
-    return ('hello from router');
+function router(path) {
+    console.log(path);
 }
 
 module.exports = {

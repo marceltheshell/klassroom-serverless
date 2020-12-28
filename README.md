@@ -1,13 +1,13 @@
 # klassroom-serverless
 
-## Deploy the sample application
-
-To build and deploy your application for the first time, run the following in your shell:
+## To Deploy
 
 ```bash
 sam build
 sam deploy --guided
 ```
+## To test locally
+sam local invoke --event ./events/getTeachers.json
 
 The first command will build the source of your application. The second command will package and deploy your application to AWS, with a series of prompts:
 
