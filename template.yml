@@ -8,7 +8,8 @@ Resources:
   klassroom:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: ./lambda/index.handler
+      CodeUri: ./lambdas/klassroom
+      Handler: index.handler
       Runtime: nodejs10.x
       MemorySize: 128
       Timeout: 100

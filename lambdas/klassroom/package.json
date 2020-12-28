@@ -1,0 +1,14 @@
+{
+  "name": "klassroom-serverless-function",
+  "version": "1.0.0",
+  "description": "The lambda which runs klassroom",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "marcel.degas@gmail.com",
+  "license": "ISC"
+}
