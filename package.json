@@ -1,6 +1,6 @@
 {
-    "name": "delete-test-01",
-    "description": "delete-test-01-description",
+    "name": "klassroom",
+    "description": "Klassroom api allows teachers to build optimized seating charts",
     "version": "0.0.1",
     "private": true,
     "dependencies": {
