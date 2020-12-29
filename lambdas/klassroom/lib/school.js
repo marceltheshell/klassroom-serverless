@@ -1,4 +1,4 @@
-function router(event) {
+function schoolRouter(event) {
     const method = event.method;
     console.log('The incoming method is:', method);
     
@@ -17,5 +17,5 @@ function router(event) {
 }
 
 module.exports = {
-    router
+    schoolRouter
 }

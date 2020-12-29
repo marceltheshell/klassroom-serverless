@@ -1,8 +1,8 @@
-const classService = require('./classes');
-const schoolService = require('./schools');
-const seatingChartService = require('./seatingCharts');
-const studentService = require('./students');
-const teacherService = require('./teachers');
+const classService = require('./class');
+const schoolService = require('./school');
+const seatingChartService = require('./seatingChart');
+const studentService = require('./student');
+const teacherService = require('./teacher');
 const response = require('./response');
 
 function router(event) {
@@ -11,15 +11,15 @@ function router(event) {
     
     switch(path) {
         case '/classes':
-            return teacherService.router(event);
+            return classService.classRouter(event);
         case '/schools':
-            return teacherService.router(event);
+            return schoolService.schoolRouter(event);
         case '/seatingCharts':
-            return teacherService.router(event);
+            return seatingChartService.seatingChartRouter(event);
         case '/students':
-            return teacherService.router(event);
+            return studentService.studentRouter(event);
         case 'teachers':
-            return teacherService.router(event);
+            return teacherService.teacherRouter(event);
         default:
             return response.buildResponse(500, 'No path was found in router')
     }
