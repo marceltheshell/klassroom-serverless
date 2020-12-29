@@ -1,4 +1,4 @@
-const seatingChartService = require('../../lambdas/klassroom/lib/seatingCharts.js'); 
+const seatingChartService = require('../../lambdas/klassroom/lib/seatingChart.js'); 
 const dynamodb = require('aws-sdk/clients/dynamodb'); 
  
 describe('Test getByIdHandler', () => { 

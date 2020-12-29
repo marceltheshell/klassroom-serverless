@@ -11,7 +11,7 @@ describe('Tests utils', () => {
             path: '/classes'
         };
         classService.classesRouter = jest.fn().mockReturnValue('GOTCHA');
-        const spy = jest.spyOn(classService, 'classesRouter')
+        // const spy = jest.spyOn(classService, 'classesRouter')
         const x = utils.router(mockEvent);
         console.log(111111, x)
         

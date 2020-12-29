@@ -1,4 +1,4 @@
-const classService = require('../../lambdas/klassroom/lib/classes.js'); 
+const classService = require('../../lambdas/klassroom/lib/class.js'); 
 const dynamodb = require('aws-sdk/clients/dynamodb'); 
  
 describe('Test getByIdHandler', () => { 
