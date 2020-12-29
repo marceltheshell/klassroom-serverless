@@ -1,3 +1,4 @@
+const response = require('./response');
 function classRouter(event) {
     const method = event.method;
     console.log('The incoming method is:', method);

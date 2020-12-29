@@ -4,6 +4,7 @@ const seatingChartService = require('./seatingChart');
 const studentService = require('./student');
 const teacherService = require('./teacher');
 const response = require('./response');
+const healthCheckService = require('./healthCheck');
 
 function router(event) {
     const path = event.path;
@@ -18,8 +19,10 @@ function router(event) {
             return seatingChartService.seatingChartRouter(event);
         case '/students':
             return studentService.studentRouter(event);
-        case 'teachers':
+        case '/teachers':
             return teacherService.teacherRouter(event);
+        case '/healthCheck':
+            return healthCheckService.healthCheck();
         default:
             return response.buildResponse(500, 'No path was found in router')
     }

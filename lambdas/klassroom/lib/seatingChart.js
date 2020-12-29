@@ -1,4 +1,5 @@
-function router(event) {
+const response = require('./response');
+function seatingChartRouter(event) {
     const method = event.method;
     console.log('The incoming method is:', method);
     
@@ -17,5 +18,5 @@ function router(event) {
 }
 
 module.exports = {
-    router
+    seatingChartRouter
 }
