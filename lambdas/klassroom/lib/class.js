@@ -16,9 +16,15 @@ exports.classRouter = async (event) => {
     }
 };
 
-const deleteClass = () => {}
-const getClass = () => { }
-const saveClass = () => {};
-const updateClass = () => {};
+function saveClass(event) {
+	const item = JSON.parse(event.body);
+	item.itemId = uuidv1();
+
+	return databaseManager.saveItem(item).then(response => {
+		console.log(response);
+		return sendResponse(200, item.itemId);
+	});
+}
+
 
 

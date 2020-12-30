@@ -1,8 +1,13 @@
 # klassroom-serverless
 
-## To Deploy
 
+## To Install Dependencies
+```
+npm run build-all
+``` 
+## To Deploy 
 ```bash
+
 sam build
 sam deploy --guided
 ```

@@ -15,13 +15,13 @@ Resources:
       Timeout: 100
       Description: The main method for the Klassroom api
       Policies:
-        # Give Create/Read/Update/Delete Permissions to the SampleTable
+        # Give Create/Read/Update/Delete Permissions to the ClassTable
         - DynamoDBCrudPolicy:
-            TableName: !Ref SampleTable
+            TableName: !Ref ClassTable
       Environment:
         Variables:
           # Make table name accessible as environment variable from function code during execution
-          SAMPLE_TABLE: !Ref SampleTable
+          SAMPLE_TABLE: !Ref ClassTable
       Events:
         Api:
           Type: Api
@@ -30,9 +30,10 @@ Resources:
             Method: GET
   
   # DynamoDB table to store item: {id: &lt;ID&gt;, name: &lt;NAME&gt;}
-  SampleTable:
-    Type: AWS::Serverless::SimpleTable
+  ClassTable:
+    Type: AWS::DynamoDB::Table
     Properties:
+      TableName: class
       PrimaryKey:
         Name: id
         Type: String
