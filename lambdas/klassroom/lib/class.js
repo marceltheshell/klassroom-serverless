@@ -1,22 +1,24 @@
 const response = require('./response');
-function classRouter(event) {
-    const method = event.method;
-    console.log('The incoming method is:', method);
+exports.classRouter = async (event) => {
+    console.log('The incoming method is:', event.httpMethod);
     
-    switch(method) {
-        case '/GET':
-            //
-        case '/POST':
-            //
-        case '/PUT':
-            //
-        case '/DELETE':
-            //
+    switch (event.httpMethod) {
+        case 'DELETE':
+            return deleteClass(event);
+        case 'GET':
+            return getClass(event);
+        case 'POST':
+            return saveClass(event);
+        case 'PUT':
+            return updateClass(event);
         default:
-            return response.buildResponse(500, 'Method was not recognized')
+            return sendResponse(500, `Unsupported method "${event.httpMethod}"`);
     }
-}
+};
 
-module.exports = {
-    classRouter
-}
+const deleteClass = () => {}
+const getClass = () => { }
+const saveClass = () => {};
+const updateClass = () => {};
+
+
