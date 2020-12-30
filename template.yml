@@ -1,9 +1,7 @@
 
-AWSTemplateFormatVersion: 2010-09-09
-Description: >-
-  klassroom-serverless
-Transform:
-- AWS::Serverless-2016-10-31
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Service to create optimized seating charts."
+Transform: "AWS::Serverless-2016-10-31"
 Resources:
   klassroom:
     Type: AWS::Serverless::Function
@@ -28,8 +26,6 @@ Resources:
           Properties:
             Path: /
             Method: GET
-  
-  # DynamoDB table to store item: {id: &lt;ID&gt;, name: &lt;NAME&gt;}
   ClassTable:
     Type: AWS::DynamoDB::Table
     Properties:

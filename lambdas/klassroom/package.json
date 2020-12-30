@@ -1,7 +1,7 @@
 {
   "name": "klassroom-serverless-function",
   "version": "1.0.0",
-  "description": "The lambda which runs klassroom",
+  "description": "The lambda to create optimized seating charts.",
   "main": "index.js",
   "directories": {
     "lib": "lib"

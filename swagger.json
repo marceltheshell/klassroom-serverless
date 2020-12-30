@@ -1,8 +1,37 @@
 {
     "swagger": "2.0",
     "info": {
-      "title": "Payment Service",
-      "version": "2.0",
-      "description": "Service to process payments and refunds"
-    }
+      "title": "Klassroom Service",
+      "version": "1.0",
+      "description": "Service to create optimized seating charts."
+    },
+    "host": "https://irmjriaeja.execute-api.us-west-1.amazonaws.com",
+    "paths": {
+
+    },
+    "securityDefinitions": {
+        "Cognito-oauth-authorizer": {
+          "type": "apiKey",
+          "name": "Authorization",
+          "in": "header",
+          "x-amazon-apigateway-authtype": "cognito_user_pools",
+          "x-amazon-apigateway-authorizer": {
+            "providerARNs": [
+              {
+                "Fn::FindInMap" : [ "EnvConfig", {"Ref" : "Environment"} , "CognitoUserPoolArn"]
+              }
+            ],
+            "type": "cognito_user_pools"
+          }
+        }
+      },
+      "schemes": [
+        "https"
+      ],
+      "consumes": [
+        "application/json"
+      ],
+      "produces": [
+        "application/json"
+      ]
 }
