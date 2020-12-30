@@ -6,8 +6,15 @@
 sam build
 sam deploy --guided
 ```
-## To test locally
-sam local invoke --event ./events/getTeachers.json
+## To test using local invoke
+sam local invoke --event <event>
+ex: sam local invoke --event ./tests/events/healthCheck.json
+
+
+## Unit tests
+Unit tests are written using the Jest framework.  Useful links:
+https://jestjs.io/docs/en/jest-object.html#jestspyonobject-methodname 
+
 
 The first command will build the source of your application. The second command will package and deploy your application to AWS, with a series of prompts:
 

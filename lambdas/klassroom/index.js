@@ -3,9 +3,10 @@ const docClient = new dynamodb.DocumentClient();
 const tableName = process.env.SAMPLE_TABLE;
 const utils = require('./lib/utils');
 exports.handler = async (event) => {
+    console.log("The incoming event: ", event);
+    const response = utils.router(event);
+    return response;
 
-    const path = event.path;
-    const test = utils.router(path);
     
     // if (event.httpMethod !== 'POST') {
     //     throw new Error(`postMethod only accepts POST method, you tried: ${event.httpMethod} method.`);
