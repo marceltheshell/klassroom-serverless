@@ -7,7 +7,7 @@
     },
     "host": "https://irmjriaeja.execute-api.us-west-1.amazonaws.com",
     "paths": {
-
+        
     },
     "securityDefinitions": {
         "Cognito-oauth-authorizer": {
@@ -18,7 +18,7 @@
           "x-amazon-apigateway-authorizer": {
             "providerARNs": [
               {
-                "Fn::FindInMap" : [ "EnvConfig", {"Ref" : "Environment"} , "CognitoUserPoolArn"]
+                "Fn::FindInMap": "CognitoUserPoolArn"
               }
             ],
             "type": "cognito_user_pools"
