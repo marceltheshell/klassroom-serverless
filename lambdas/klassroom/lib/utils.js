@@ -6,23 +6,23 @@ const teacherService = require('./teacher');
 const response = require('./response');
 const healthCheckService = require('./healthCheck');
 
-function router(event) {
+async function router(event) {
     const path = event.path;
     console.log('The incoming path is:', path);
     
     switch(path) {
         case '/class':
-            return classService.classRouter(event);
+            return await classService.classRouter(event);
         case '/school':
-            return schoolService.schoolRouter(event);
+            return await schoolService.schoolRouter(event);
         case '/seatingChart':
-            return seatingChartService.seatingChartRouter(event);
+            return await seatingChartService.seatingChartRouter(event);
         case '/student':
-            return studentService.studentRouter(event);
+            return await studentService.studentRouter(event);
         case '/teacher':
-            return teacherService.teacherRouter(event);
+            return await teacherService.teacherRouter(event);
         case '/health':
-            return healthCheckService.healthCheck();
+            return await healthCheckService.healthCheck();
         default:
             return response.buildResponse(500, 'No path was found in router')
     }
