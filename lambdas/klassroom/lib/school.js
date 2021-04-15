@@ -1,22 +1,33 @@
 const response = require('./response');
-function schoolRouter(event) {
-    const method = event.method;
-    console.log('The incoming method is:', method);
+
+exports.schoolRouter = async (event) => {
+    console.log('The incoming method is:', event.httpMethod);
     
-    switch(method) {
-        case '/GET':
-            //
-        case '/POST':
-            //
-        case '/PUT':
-            //
-        case '/DELETE':
-            //
+    switch (event.httpMethod) {
+        case 'DELETE':
+            return await deleteSchool(event);
+        case 'GET':
+            return await getSchool(event);
+        case 'POST':
+            return await saveSchool(event);
+        case 'PUT':
+            return await updateSchool(event);
         default:
-            return response.buildResponse(500, 'Method was not recognized')
+            return sendResponse(500, `Unsupported method "${event.httpMethod}"`);
     }
+};
+
+const saveSchool = async (event) => {
+	// const item = JSON.parse(event.body);
+	// item.itemId = uuidv1();
+
+	// return databaseManager.saveItem(item).then(response => {
+	// 	console.log(response);
+	// 	return sendResponse(200, item.itemId);
+	// });
 }
 
-module.exports = {
-    schoolRouter
-}
+const deleteSchool = async (event) => {}
+const getSchool = async (event) => {}
+const updateSchool = async (event) => {}
+

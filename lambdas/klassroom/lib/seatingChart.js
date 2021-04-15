@@ -1,22 +1,33 @@
 const response = require('./response');
-function seatingChartRouter(event) {
-    const method = event.method;
-    console.log('The incoming method is:', method);
+
+exports.seatingChartRouter = async (event) => {
+    console.log('The incoming method is:', event.httpMethod);
     
-    switch(method) {
-        case '/GET':
-            //
-        case '/POST':
-            //
-        case '/PUT':
-            //
-        case '/DELETE':
-            //
+    switch (event.httpMethod) {
+        case 'DELETE':
+            return await deleteSeatingChart(event);
+        case 'GET':
+            return await getSeatingChart(event);
+        case 'POST':
+            return await saveSeatingChart(event);
+        case 'PUT':
+            return await updateSeatingChart(event);
         default:
-            return response.buildResponse(500, 'Method was not recognized')
+            return sendResponse(500, `Unsupported method "${event.httpMethod}"`);
     }
+};
+
+const saveSeatingChart = async (event) => {
+	// const item = JSON.parse(event.body);
+	// item.itemId = uuidv1();
+
+	// return databaseManager.saveItem(item).then(response => {
+	// 	console.log(response);
+	// 	return sendResponse(200, item.itemId);
+	// });
 }
 
-module.exports = {
-    seatingChartRouter
-}
+const deleteSeatingChart = async (event) => {}
+const getSeatingChart = async (event) => {}
+const updateSeatingChart = async (event) => {}
+
