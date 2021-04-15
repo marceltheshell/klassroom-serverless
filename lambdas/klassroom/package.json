@@ -9,6 +9,7 @@
   "author": "marcel.degas@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "ajv": "^6.10.0"
   }
 }
