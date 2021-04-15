@@ -1,0 +1,8 @@
+{
+    "method": "GET",
+    "path": "/class",
+    "body": {
+      "id": "XXXX-TEST-ID-XXXX"
+    }
+  }
+  
