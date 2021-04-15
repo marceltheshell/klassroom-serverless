@@ -20,7 +20,7 @@ sam deploy --guided
 ```
 ## To test using local invoke
 sam local invoke --event <event>
-ex: sam local invoke --event ./tests/events/healthCheck.json
+ex: sam local invoke --event ./tests/events/classes/createClass.json
 
 
 ## Unit tests
