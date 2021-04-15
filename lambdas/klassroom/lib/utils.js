@@ -11,17 +11,17 @@ function router(event) {
     console.log('The incoming path is:', path);
     
     switch(path) {
-        case '/classes':
+        case '/class':
             return classService.classRouter(event);
-        case '/schools':
+        case '/school':
             return schoolService.schoolRouter(event);
-        case '/seatingCharts':
+        case '/seatingChart':
             return seatingChartService.seatingChartRouter(event);
-        case '/students':
+        case '/student':
             return studentService.studentRouter(event);
-        case '/teachers':
+        case '/teacher':
             return teacherService.teacherRouter(event);
-        case '/healthCheck':
+        case '/health':
             return healthCheckService.healthCheck();
         default:
             return response.buildResponse(500, 'No path was found in router')
