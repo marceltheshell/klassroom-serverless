@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "properties": {
+    "storeKey": {
+      "type": "string",
+      "enum": ["STORE-CA","STORE-DE","STORE-ES","STORE-EU","STORE-FR","STORE-IT","STORE-NAMER","STORE-UK","STORE-FORGEEU","STORE-FORGENAMER","STORE-FORGEUK","IPP-CA","IPP-DE","IPP-ES","IPP-EU","IPP-FR","IPP-IT","IPP-NAMER","IPP-UK","STORE-AUS","STORE-CH","STORE-CZ","STORE-DK","STORE-PL","STORE-NO","STORE-SE","STORE-FORGECH","STORE-FORGECZ","STORE-FORGEDK","STORE-FORGEPL","STORE-FORGENO","STORE-FORGESE"]
+    },
+    "agentReferenceId": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9]+$"
+    },
+    "agentReferenceEmail": {
+      "format": "email"
+    },
+    "lineItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "priceId": {
+            "type": "string",
+            "maxLength": 1024,
+            "pattern": "^[a-zA-Z0-9]+$"
+          },
+          "quantity": {
+            "type": "number",
+            "maxLength": 1024,
+            "pattern": "^[a-zA-Z0-9]+$"
+          }
+        }
+      }
+    }
+  }, 
+  "required": [
+    "storeKey"
+  ]
+}
