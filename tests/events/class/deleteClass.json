@@ -1,0 +1,7 @@
+{
+    "method": "DELETE",
+    "path": "/class",
+    "body": {
+      "id": ""
+    }
+  }

@@ -6,7 +6,7 @@ const teacherService = require('./teacher');
 const response = require('./response');
 const healthCheckService = require('./healthCheck');
 
-async function router(event) {
+exports.router = async (event) => {
     const path = event.path;
     console.log('The incoming path is:', path);
     
@@ -27,7 +27,3 @@ async function router(event) {
             return response.buildResponse(500, 'No path was found in router')
     }
 }
-
-module.exports = {
-    router
-};

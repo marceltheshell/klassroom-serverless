@@ -1,9 +1,9 @@
 const response = require('./response');
 
 exports.schoolRouter = async (event) => {
-    console.log('The incoming method is:', event.httpMethod);
+    console.log('The incoming method is:', event.method);
     
-    switch (event.httpMethod) {
+    switch (event.method) {
         case 'DELETE':
             return await deleteSchool(event);
         case 'GET':
@@ -13,7 +13,7 @@ exports.schoolRouter = async (event) => {
         case 'PUT':
             return await updateSchool(event);
         default:
-            return sendResponse(500, `Unsupported method "${event.httpMethod}"`);
+            return sendResponse(500, `Unsupported method "${event.method}"`);
     }
 };
 
