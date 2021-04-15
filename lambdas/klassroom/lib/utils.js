@@ -22,7 +22,7 @@ async function router(event) {
         case '/teacher':
             return await teacherService.teacherRouter(event);
         case '/health':
-            return await healthCheckService.healthCheck();
+            return healthCheckService.healthCheck();
         default:
             return response.buildResponse(500, 'No path was found in router')
     }
