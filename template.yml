@@ -2,32 +2,149 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: "Service to create optimized seating charts."
 Transform: "AWS::Serverless-2016-10-31"
-Mappings: 
-  CognitoUserPoolArn: 'test'
 Resources:
-  klassroom:
+  KlassroomRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: "sts:AssumeRole"
+      Policies:
+        - PolicyName: LogAccess
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "logs:CreateLogGroup"
+                  - "logs:CreateLogStream"
+                  - "logs:PutLogEvents"
+                  - "logs:DescribeLogStreams"
+                Resource:
+                  - "arn:aws:logs:*:*:*"
+  KlassroomFunction:
+    DependsOn: KlassroomRole
     Type: AWS::Serverless::Function
     Properties:
+      Role: !GetAtt KlassroomRole.Arn
       CodeUri: ./lambdas/klassroom
       Handler: index.handler
       Runtime: nodejs10.x
       MemorySize: 128
       Timeout: 100
       Description: The main method for the Klassroom api
-      Policies:
-        # Give Create/Read/Update/Delete Permissions to the ClassTable
-        - DynamoDBCrudPolicy:
-            TableName: !Ref ClassTable
-      Environment:
-        Variables:
-          # Make table name accessible as environment variable from function code during execution
-          CLASS_TABLE: !Ref ClassTable
       Events:
-        Api:
+        GetHealth:
           Type: Api
           Properties:
-            Path: /
+            Path: /health
             Method: GET
+        GetClass:
+          Type: Api
+          Properties:
+            Path: /class
+            Method: GET
+        PostClass:
+          Type: Api
+          Properties:
+            Path: /class
+            Method: POST
+        PutClass:
+          Type: Api
+          Properties:
+            Path: /class
+            Method: PUT
+        DeleteClass:
+          Type: Api
+          Properties:
+            Path: /class
+            Method: DELETE
+        GetTeacher:
+          Type: Api
+          Properties:
+            Path: /teacher
+            Method: GET
+        PostTeacher:
+          Type: Api
+          Properties:
+            Path: /teacher
+            Method: POST
+        PutTeacher:
+          Type: Api
+          Properties:
+            Path: /teacher
+            Method: PUT
+        DeleteTeacher:
+          Type: Api
+          Properties:
+            Path: /teacher
+            Method: DELETE
+        GetSeatingChart:
+          Type: Api
+          Properties:
+            Path: /seatingChart
+            Method: GET
+        PostSeatingChart:
+          Type: Api
+          Properties:
+            Path: /seatingChart
+            Method: POST
+        PutSeatingChart:
+          Type: Api
+          Properties:
+            Path: /seatingChart
+            Method: PUT
+        DeleteSeatingChart:
+          Type: Api
+          Properties:
+            Path: /seatingChart
+            Method: DELETE
+        GetStudent:
+          Type: Api
+          Properties:
+            Path: /student
+            Method: GET
+        PostStudent:
+          Type: Api
+          Properties:
+            Path: /student
+            Method: POST
+        PutStudent:
+          Type: Api
+          Properties:
+            Path: /student
+            Method: PUT
+        DeleteStudent:
+          Type: Api
+          Properties:
+            Path: /student
+            Method: DELETE
+        GetSchool:
+          Type: Api
+          Properties:
+            Path: /school
+            Method: GET
+        PostSchool:
+          Type: Api
+          Properties:
+            Path: /school
+            Method: POST
+        PutSchool:
+          Type: Api
+          Properties:
+            Path: /school
+            Method: PUT
+        DeleteSchool:
+          Type: Api
+          Properties:
+            Path: /school
+            Method: DELETE
   ClassTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
@@ -38,8 +155,3 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: 2
         WriteCapacityUnits: 2
-
-Outputs:
-  WebEndpoint:
-    Description: "API Gateway endpoint URL for Prod stage"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
