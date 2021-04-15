@@ -18,7 +18,9 @@ exports.classRouter = async (event) => {
 };
 
 const saveClass = async (event) => {
-	// const item = JSON.parse(event.body);
+	return Promise.resolve('mock save class response');
+    
+    // const item = JSON.parse(event.body);
 	// item.itemId = uuidv1();
 
 	// return databaseManager.saveItem(item).then(response => {
@@ -27,9 +29,15 @@ const saveClass = async (event) => {
 	// });
 }
 
-const deleteClass = async (event) => {}
-const getClass = async (event) => {}
-const updateClass = async (event) => {}
+const deleteClass = async (event) => {
+    return Promise.resolve('mock delete class response');
+}
+const getClass = async (event) => {
+    return Promise.resolve('mock get class response');
+}
+const updateClass = async (event) => {
+    return Promise.resolve('mock update class response');
+}
 
 
 
